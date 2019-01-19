@@ -3,4 +3,19 @@
     <string name="app_name">Lab1</string>
     <string name="hello_message">你好，世界!</string>
     <string name="ButtonText">I\’m a button</string>
+    <string name="here_are_my_widgets">这是我的小部件:</string>
+    <string name="check_this_out">检查</string>
+    <string name="type_your_answer_in_here">在这儿输入你的答案</string>
+    <string name="button">按钮</string>
+    <string name="switch_on_off">开/关</string>
+    <string name="button_linear">按钮</string>
+    <string name="check_this_out_linear">检查</string>
+    <string name="switch_on_off_linear">开/关</string>
+    <string name="type_your_answer_in_here_linear">在这儿输入你的答案</string>
+    <string name="here_are_my_widgets_grid">这是我的小部件：</string>
+    <string name="button_grid">按钮</string>
+    <string name="switch_on_off_grid">开/关</string>
+    <string name="type_your_answer_in_here_grid">在这儿输入你的答案</string>
+    <string name="check_this_out_grid">检查</string>
+    <string name="here_are_my_widgets_linear">这是我的小部件:</string>
 </resources>

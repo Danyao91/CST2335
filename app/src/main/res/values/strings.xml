@@ -2,4 +2,19 @@
     <string name="app_name">Lab1</string>
     <string name="hello_message">Hello World!</string>
     <string name="ButtonText">I\’m a button</string>
+    <string name="here_are_my_widgets">Here are my widgets:</string>
+    <string name="check_this_out">Check this out!</string>
+    <string name="type_your_answer_in_here">Type your answer in here</string>
+    <string name="button">Button</string>
+    <string name="switch_on_off">Switch on / off</string>
+    <string name="button_linear">Button</string>
+    <string name="check_this_out_linear">Check this out!</string>
+    <string name="switch_on_off_linear">Switch on / off</string>
+    <string name="type_your_answer_in_here_linear">Type your answer in here</string>
+    <string name="here_are_my_widgets_grid">Here are my widgets:</string>
+    <string name="button_grid">Button</string>
+    <string name="switch_on_off_grid">Switch on/ off</string>
+    <string name="type_your_answer_in_here_grid">Type your answer in here</string>
+    <string name="check_this_out_grid">Check this out!</string>
+    <string name="here_are_my_widgets_linear">Here are my widgets:</string>
 </resources>
