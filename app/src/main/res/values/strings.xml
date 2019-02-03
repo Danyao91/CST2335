@@ -17,4 +17,15 @@
     <string name="type_your_answer_in_here_grid">Type your answer in here</string>
     <string name="check_this_out_grid">Check this out!</string>
     <string name="here_are_my_widgets_linear">Here are my widgets:</string>
+    <string name="emailText">Enter you email address</string>
+    <string name="type_email_here">Type email here</string>
+    <string name="type_your_password">Type your password:</string>
+    <string name="login">LOGIN</string>
+    <string name="your_profile">Your profile</string>
+    <string name="your_name">Your name:</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="your_email">Your email:</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="your_picture">Your picture:</string>
+    <string name="click_the_button_above_to_take_a_picture">Click the button above to take a picture</string>
 </resources>

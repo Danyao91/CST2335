@@ -18,4 +18,15 @@
     <string name="type_your_answer_in_here_grid">在这儿输入你的答案</string>
     <string name="check_this_out_grid">检查</string>
     <string name="here_are_my_widgets_linear">这是我的小部件:</string>
+    <string name="emailText">请输入邮件地址</string>
+    <string name="type_email_here">输入电子邮件</string>
+    <string name="type_your_password">输入密码</string>
+    <string name="login">登陆</string>
+    <string name="your_profile">文档</string>
+    <string name="your_name">姓名：</string>
+    <string name="enter_your_name">请输入你的名字</string>
+    <string name="your_email">你的邮件：</string>
+    <string name="enter_your_email">请输入你的电子邮件</string>
+    <string name="your_picture">你的照片：</string>
+    <string name="click_the_button_above_to_take_a_picture">点击上面按钮进行拍照</string>
 </resources>
