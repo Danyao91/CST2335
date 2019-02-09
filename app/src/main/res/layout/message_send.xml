@@ -6,7 +6,7 @@
 
       <ImageView
         android:id="@+id/imageS"
-        android:src="@drawable/row_send"
+        android:src="@drawable/row_sender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0"
