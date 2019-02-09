@@ -45,6 +45,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/click_the_button_above_to_take_a_picture"/>
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to chat"/>
+
 
 
 

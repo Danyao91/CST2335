@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-        Button nextButton = (Button)getWindow().findViewById(R.id.button);
+        Button nextButton = findViewById(R.id.button);
         nextButton.setOnClickListener( b -> {
 
             Intent nextPage = new Intent(MainActivity.this, ProfileActivity.class);
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(nextPage,2);
 
         });
+
 
         emailEditText = getWindow().findViewById(R.id.emailEditText);
         sp = getSharedPreferences("Email", Context.MODE_PRIVATE);

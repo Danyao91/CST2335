@@ -24,6 +24,15 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profileactivity);
         Log.e(ACTIVITY_NAME, "In onCreate()");
 
+        Button nextButton = findViewById(R.id.button2);
+        nextButton.setOnClickListener ( b -> {
+
+            Intent nextPage = new Intent (ProfileActivity.this, ChatRoomActivity.class);
+            startActivityForResult(nextPage, 2);
+
+        });
+
+
         Intent previousPage = getIntent();
 
         String previousTyped = previousPage.getStringExtra("email");
