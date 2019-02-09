@@ -29,4 +29,8 @@
     <string name="enter_your_email">请输入你的电子邮件</string>
     <string name="your_picture">你的照片：</string>
     <string name="click_the_button_above_to_take_a_picture">点击上面按钮进行拍照</string>
+    <string name="go_to_chat">去聊天</string>
+    <string name="editText">在这里输入</string>
+    <string name="receive">接受</string>
+    <string name="send">发送</string>
 </resources>

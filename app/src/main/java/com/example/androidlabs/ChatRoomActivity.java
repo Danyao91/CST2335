@@ -79,11 +79,6 @@ public class ChatRoomActivity extends AppCompatActivity {
             TextView message = newView.findViewById(R.id.EditText);
             message.setText(getItem(position));
 
-            result newView;
-
-
-
-
             return newView;
         }
 

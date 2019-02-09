@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ButtonSend"
-        android:text="SEND"
+        android:text="@string/send"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"/>
 
@@ -31,13 +31,13 @@
         android:layout_marginLeft="0dp"
         android:layout_toLeftOf="@+id/ButtonReceive"
         android:layout_toRightOf="@+id/ButtonSend"
-        android:hint="type here " />
+        android:hint="@string/editText" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ButtonReceive"
-        android:text="RECEIVE"
+        android:text="@string/receive"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"/>
 
