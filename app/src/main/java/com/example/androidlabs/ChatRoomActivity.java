@@ -57,10 +57,10 @@ public class ChatRoomActivity extends AppCompatActivity {
             long id = results.getLong(idColIndex);
 
 
-            if(send.equals("SEND"))
+            if(send.equals("TRUE"))
                 //add the new message to the array list
                 messages.add(new Message(id, message,true));
-            if(send.equals("RECEIVE"))
+            if(send.equals("FALSE"))
                 messages.add(new Message(id, message,false));
 
         }
@@ -73,11 +73,12 @@ public class ChatRoomActivity extends AppCompatActivity {
             String message = messageEditText.getText().toString();
             String send = ButtonSend.getText().toString();
 
+
             // add to the database and get the new ID
             ContentValues newRowValues = new ContentValues();
             //put string message in the message column
             newRowValues.put(MyDatabaseOpenHelper.COL_MESSAGE, message);
-            newRowValues.put(MyDatabaseOpenHelper.COL_SEND,send);
+            newRowValues.put(MyDatabaseOpenHelper.COL_SEND,"TRUE");
 
             //insert to the database
             long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME,null,newRowValues);
@@ -107,7 +108,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             ContentValues newRowValues = new ContentValues();
             //put string message in the message column
             newRowValues.put(MyDatabaseOpenHelper.COL_MESSAGE, message);
-            newRowValues.put(MyDatabaseOpenHelper.COL_SEND,send);
+            newRowValues.put(MyDatabaseOpenHelper.COL_SEND,"FALSE");
 
             //insert to the database
             long newId = db.insert(MyDatabaseOpenHelper.TABLE_NAME,null,newRowValues);
