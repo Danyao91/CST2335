@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/item1"
+        android:title="initial message"
+        android:icon="@drawable/choice1"
+        android:orderInCategory="100"
+        app:showAsAction="always"/>
+    <item android:id="@+id/item2"
+        android:title="new message"
+        android:icon="@drawable/choice2"
+        android:orderInCategory="200"
+        app:showAsAction="always"/>
+    <item android:id="@+id/item3"
+        android:title="go back"
+        android:icon="@drawable/choice3"
+        android:orderInCategory="300"
+        app:showAsAction="always"/>
+    <item android:id="@+id/item4"
+        android:title="overflow"
+        android:icon="@drawable/choice4"
+        android:orderInCategory="400"
+        app:showAsAction="never"/>
+
+</menu>

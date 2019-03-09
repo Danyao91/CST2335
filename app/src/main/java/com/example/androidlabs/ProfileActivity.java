@@ -32,6 +32,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
+        Button toolbarButton = findViewById(R.id.buttonTool);
+        toolbarButton.setOnClickListener( b -> {
+
+            Intent nextPage2 = new Intent(ProfileActivity.this, TestToolbar.class);
+            startActivity(nextPage2);
+
+        });
+
 
         Intent previousPage = getIntent();
 
