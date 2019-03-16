@@ -70,6 +70,7 @@ public class WeatherForecast extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... strings) {
+            String iconName="";
 
             try {
                 url = new URL("http://api.openweathermap.org/data/2.5/weather?q=ottawa,ca&APPID=7e943c97096a9784391a981c4d878b22&mode=xml&units=metric");
@@ -106,11 +107,12 @@ public class WeatherForecast extends AppCompatActivity {
 
                             value = xpp.getAttributeValue(null, "value");
                             Log.e("AsyncTask", "Found parameter max temperature: " + value);
-
                             publishProgress(75);
 
-
                         }
+                        if (tagName.equals("weather")){
+                            iconName = xpp.getAttributeValue(null, "icon");
+                            Log.e("AsyncTask", "Found parameter max temperature: " + iconName);}
                     }
                     eventType = xpp.next();
                 }
@@ -122,21 +124,11 @@ public class WeatherForecast extends AppCompatActivity {
 
             if (!fileExistance(iconName + ".png")) {
                 FileOutputStream outputStream = null;
-                Bitmap image = null;
-
+                Bitmap image = HttpUtils.getImage("http://openweathermap.org/img/w/" + iconName + ".png");
 
 
                 try {
-                    url = new URL("http://openweathermap.org/img/w/");
-                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
-                    urlConnection.connect();
-                    int responseCode = urlConnection.getResponseCode();
-                    if(responseCode ==200) {
-                        image = BitmapFactory.decodeStream(urlConnection.getInputStream());
-                    }
-
-                    image = HttpUtils.getImage("http://openweathermap.org/img/w/");
                     outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
 
                     image.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
@@ -162,6 +154,7 @@ public class WeatherForecast extends AppCompatActivity {
             }
 
             bm = BitmapFactory.decodeStream(fis);
+
 
 
             try {
