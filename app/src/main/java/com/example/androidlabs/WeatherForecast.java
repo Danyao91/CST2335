@@ -76,18 +76,20 @@ public class WeatherForecast extends AppCompatActivity {
 
                 //create the network connection
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-                factory.setNamespaceAware(false);
-                XmlPullParser xpp = Xml.newPullParser();
+
                 InputStream inStream = urlConnection.getInputStream();
 
                 //create a pull parser
-
+                XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+                factory.setNamespaceAware(false);
+                XmlPullParser xpp = Xml.newPullParser();
                 xpp.setInput(inStream, "UTF-8");
 
+                int eventType = xpp.getEventType();
+
                 //loop over XML
-                while (xpp.getEventType() != XmlPullParser.END_DOCUMENT) {
-                    if (xpp.getEventType() == XmlPullParser.START_TAG) {
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    if (eventType == XmlPullParser.START_TAG) {
                         String tagName = xpp.getName();
                         if (tagName.equals("speed")) {
                             speed = xpp.getAttributeValue(null, "value");
@@ -110,6 +112,7 @@ public class WeatherForecast extends AppCompatActivity {
 
                         }
                     }
+                    eventType = xpp.next();
                 }
 
             } catch (Exception e) {
@@ -118,11 +121,22 @@ public class WeatherForecast extends AppCompatActivity {
             }
 
             if (!fileExistance(iconName + ".png")) {
-
-                Bitmap image = HttpUtils.getImage("http://openweathermap.org/img/w/" + iconName + ".png");
                 FileOutputStream outputStream = null;
+                Bitmap image = null;
+
+
 
                 try {
+                    url = new URL("http://openweathermap.org/img/w/");
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+
+                    urlConnection.connect();
+                    int responseCode = urlConnection.getResponseCode();
+                    if(responseCode ==200) {
+                        image = BitmapFactory.decodeStream(urlConnection.getInputStream());
+                    }
+
+                    image = HttpUtils.getImage("http://openweathermap.org/img/w/");
                     outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
 
                     image.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
