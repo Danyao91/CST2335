@@ -40,6 +40,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         });
 
+        Button weatherButton = findViewById(R.id.buttonWeather);
+        weatherButton.setOnClickListener( b -> {
+
+            Intent nextPage3 = new Intent(ProfileActivity.this, WeatherForecast.class);
+            startActivity(nextPage3);
+
+        });
 
         Intent previousPage = getIntent();
 

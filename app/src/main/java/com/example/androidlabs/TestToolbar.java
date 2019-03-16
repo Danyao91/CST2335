@@ -19,13 +19,14 @@ import android.widget.Toast;
 public class TestToolbar extends AppCompatActivity {
 
     private String currentMessage = "This is the initial message";
+    private Toolbar tBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_toolbar);
 
-        Toolbar tBar = (Toolbar)findViewById(R.id.toolbar);
+        tBar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(tBar);
 
 
@@ -65,7 +66,7 @@ public class TestToolbar extends AppCompatActivity {
 
             case R.id.item3:
 
-                Snackbar sb = Snackbar.make(findViewById(R.id.item3), "Go Back?", Snackbar.LENGTH_LONG)
+                Snackbar sb = Snackbar.make(tBar, "Go Back?", Snackbar.LENGTH_LONG)
                 .setAction("Yes!", e -> finish());
                 sb.show();
 
