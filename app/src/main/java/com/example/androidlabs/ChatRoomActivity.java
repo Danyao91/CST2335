@@ -146,7 +146,7 @@ public class ChatRoomActivity extends AppCompatActivity {
             Log.d("isASendTextView", String.valueOf(isASendTextView));
 
             if (isTablet) {
-                MessageFragment messageFragment = MessageFragment.newInstance(isTablet, message, messageId, isASendTextView);
+                MessageFragment messageFragment = MessageFragment.newInstance(true, message, messageId, isASendTextView);
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentBlank, messageFragment).commit();
 
