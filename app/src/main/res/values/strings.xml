@@ -32,4 +32,5 @@
     <string name="editText">type here</string>
     <string name="receive">RECEIVE</string>
     <string name="send">SEND</string>
+    <string name="detele_this_message">DETELE THIS MESSAGE</string>
 </resources>

@@ -1,7 +1,9 @@
 package com.example.androidlabs;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -15,9 +17,11 @@ import android.widget.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ChatRoomActivity extends AppCompatActivity {
 
+    int clickPosition =0;
     private List<Message> messages;
     private ListView listView;
     private Button ButtonSend;
@@ -25,17 +29,21 @@ public class ChatRoomActivity extends AppCompatActivity {
     private EditText messageEditText;
     private SQLiteDatabase db;
     private MyDatabaseOpenHelper dbOpener;
+    ChatAdapter messageAdapter;
+    private boolean isTablet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatroomactivity);
 
+        messageAdapter = new ChatAdapter(this,0);
         messages = new ArrayList<>();
 
         listView = findViewById(R.id.List);
         ButtonSend = findViewById(R.id.ButtonSend);
         ButtonReceive = findViewById(R.id.ButtonReceive);
         messageEditText = findViewById(R.id.EditText);
+        isTablet = findViewById(R.id.fragmentLocation) != null;
 
         //get a database
          dbOpener= new MyDatabaseOpenHelper(this);
@@ -66,7 +74,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         }
 
         //create an adapter object and send it to the listView
-        final ChatAdapter messageAdapter = new ChatAdapter(this, 0);
+        messageAdapter = new ChatAdapter(this, 0);
         listView.setAdapter(messageAdapter);
 
         ButtonSend.setOnClickListener(v -> {
@@ -125,9 +133,41 @@ public class ChatRoomActivity extends AppCompatActivity {
             messageEditText.setText("");
         });
 
+        listView.setOnItemClickListener((parent, view, position, id) ->{
+            String message = Objects.requireNonNull(messageAdapter.getItem(position)).getMessage();
+            long messageId = messageAdapter.getItemId(position);
+            String sORr =String.valueOf(messageAdapter.getItem(position).getIsSent());
+            clickPosition=position;
+
+            if(isTablet) {
+                FragmentTablet fragmentTablet = FragmentTablet.newInstance(true, message, messageId, sORr);
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentLocation, fragmentTablet).commit();
+            }else{
+                Intent intent = new Intent(ChatRoomActivity.this, DetailActivity.class);
+                intent.putExtra("message", message);
+                intent.putExtra("messageId", messageId);
+                intent.putExtra("sORr", sORr);
+                intent.putExtra("isTablet", false);
+                startActivityForResult(intent, 21);
+            }
+        });
+
         printCursor(results);
     }
 
+    public void deleteMessage(int position) {
+        db.delete(MyDatabaseOpenHelper.TABLE_NAME, MyDatabaseOpenHelper.COL_ID + " = ?", new String[]{String.valueOf(messageAdapter.getItemId(position))});
+
+        messages.remove(position);
+        messageAdapter.notifyDataSetChanged();
+    }
+
+    public void onActivityResult(int requestCode, int responseCode, Intent data){
+        if(requestCode == 21 && responseCode == Activity.RESULT_OK){
+            deleteMessage((int) data.getLongExtra("messageId",0));
+        }
+    }
 
     protected class ChatAdapter extends ArrayAdapter<Message> {
 
